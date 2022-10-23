@@ -67,11 +67,9 @@ let generate = () => {
     if(image.files[0] === undefined) 
        // alertify.error('Gambar tidak boleh kosong!'); //
        
-       Report.failure(
-       'Notiflix Failure',
-       '"Failure is simply the opportunity to begin again, this time more intelligently." <br/><br/>- Henry Ford',
-       'Okay',
-       );
+       new jBox('Tooltip', {
+           attach: '.tooltip'
+           });
 
     else{
         destroyInterval();                               
