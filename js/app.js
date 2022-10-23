@@ -65,7 +65,15 @@ let enableBtnDownload = () => {
 let generate = () => {
     
     if(image.files[0] === undefined) 
-       alertify.error('Gambar tidak boleh kosong!');
+       // alertify.error('Gambar tidak boleh kosong!'); //
+       
+       alertia({"msg": "Gambar tidak boleh kosong!",
+
+       "type":"error",
+
+       "style":"slit",
+
+       "time":"3000"});
 
     else{
         destroyInterval();                               
