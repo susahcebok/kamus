@@ -1,6 +1,6 @@
 // app.js
 
-let canvas = document.getElementById('canvas');
+let canvas = document.getElementById('twibbon');
 let c = canvas.getContext('2d');
 let filename = "twibbon-by-ferry-ayunda";
 let btnDownload = document.getElementById('download');
