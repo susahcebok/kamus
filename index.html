@@ -26,7 +26,7 @@
 
 <p>
 <button id="myModal" class="press press-black press-round press-ghost" onclick="generate()">Pratinjau</button>
-<button class="press press-indigo press-round press-ghost" onclick="download('')" id="download" disabled>Unduh</button>
+<!--<button class="press press-indigo press-round press-ghost" onclick="download('')" id="download" disabled>Unduh</button>-->
 </p>
 
 
@@ -52,7 +52,7 @@ new jBox('Tooltip', {
 <script>
 new jBox('Modal', {
   attach: '#myModal',
-  title: 'Grab an element',
+  title: '<button class="press press-indigo press-round press-ghost" onclick="download('')" id="download" disabled>Unduh</button>',
   content: $('#resultTW')
 });
 </script>
