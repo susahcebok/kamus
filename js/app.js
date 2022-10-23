@@ -67,12 +67,11 @@ let generate = () => {
     if(image.files[0] === undefined) 
        // alertify.error('Gambar tidak boleh kosong!'); //
        
-       LoudIt(`Gambar tidak boleh kosong!`, {
-       speed: 300,
-       background: '#44B',
-       opacity: .10,
-       color: '#fffb'
-       });
+       Report.failure(
+       'Notiflix Failure',
+       '"Failure is simply the opportunity to begin again, this time more intelligently." <br/><br/>- Henry Ford',
+       'Okay',
+       );
 
     else{
         destroyInterval();                               
