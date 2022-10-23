@@ -67,13 +67,12 @@ let generate = () => {
     if(image.files[0] === undefined) 
        // alertify.error('Gambar tidak boleh kosong!'); //
        
-       alertia({"msg": "Gambar tidak boleh kosong!",
-
-       "type":"danger",
-
-       "style":"roll",
-
-       "time":"3000"});
+       LoudIt(`Gambar tidak boleh kosong!`, {
+       speed: 300,
+       background: '#44B',
+       opacity: .10,
+       color: '#fffb'
+       });
 
     else{
         destroyInterval();                               
