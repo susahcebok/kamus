@@ -67,8 +67,9 @@ let generate = () => {
     if(image.files[0] === undefined) 
        // alertify.error('Gambar tidak boleh kosong!'); //
        
-       new jBox('Tooltip', {
-           attach: '.tooltip'
+       new jBox('Notice', {
+           content: 'Gambar tidak boleh kosong!',
+           color: 'blue'
            });
 
     else{
