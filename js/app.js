@@ -71,7 +71,7 @@ let generate = () => {
 
        "type":"danger",
 
-       "style":"fade",
+       "style":"roll",
 
        "time":"3000"});
 
