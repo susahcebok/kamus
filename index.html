@@ -31,7 +31,9 @@
 
 
 <p>
+<div style="display: none" id="resultTW">
 <canvas id="canvas"></canvas>
+</div>
 </p>
 
 
@@ -44,6 +46,14 @@
 <script>
 new jBox('Tooltip', {
   attach: '.tooltip'
+});
+</script>
+
+<script>
+new jBox('Modal', {
+  attach: '#myModal',
+  title: 'Grab an element',
+  content: $('#resultTW')
 });
 </script>
 </body>
