@@ -33,6 +33,7 @@
 <p>
 <div style="display: none" id="resultTW">
 <canvas id="canvas"></canvas>
+<p><button class="press press-indigo press-round press-ghost" onclick="download('')" id="download" disabled>Unduh</button></p>
 </div>
 </p>
 
@@ -52,7 +53,7 @@ new jBox('Tooltip', {
 <script>
 new jBox('Modal', {
   attach: '#myModal',
-  title: '<button class="press press-indigo press-round press-ghost" onclick="download('')" id="download" disabled>Unduh</button>',
+  title: 'Twibbon Generator',
   content: $('#resultTW')
 });
 </script>
