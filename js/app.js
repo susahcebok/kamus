@@ -69,7 +69,7 @@ let generate = () => {
        
        alertia({"msg": "Gambar tidak boleh kosong!",
 
-       "type":"error",
+       "type":"danger",
 
        "style":"slit",
 
