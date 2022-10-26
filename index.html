@@ -9,12 +9,19 @@
 <link rel="stylesheet" href="css/style.css">
 <script defer src="js/translate.js"></script>
 <style>
-textarea {
-	resize: none;
+[contenteditable]:empty::before {
+	content: attr(placeholder) " ";
+	display: block;
+	color: rgb(200,200,200);
+}
+
+.jm-textarea[contenteditable] {
+	display: inline-block;
+	overflow: auto;
 	padding: 5px;
-	min-height: 50px;
-	overflow-y: auto;
-	max-height: 200px;
+	height: auto;
+	width: 100%;
+	border: solid 1px black;	
 }
 
 button {
@@ -33,7 +40,7 @@ svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
 <h1 class="notranslate">Kamus Translate</h1>
 
 <p>
-<textarea oninput="textAreaAdjust(this)">You can translate the content of this page by selecting a language in the select box.</textarea>
+<div class='jm-textarea' placeholder="You can translate the content of this page by selecting a language in the select box." contenteditable></div>
 </p>
 
 <!-- bearror logo ✖ᴥ✖ -->
@@ -109,19 +116,13 @@ svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
         </select>
 </p>
 
-
-<p class="notranslate"><button class="button">Click Me</button></p>
-
 <!--
+<p class="notranslate"><button class="button">Click Me</button></p>
 <p><a href="#">More information...</a></p>
 -->
 
 </div>
 <script>
-function textAreaAdjust(o) {
-  o.style.height = "1px";
-  o.style.height = (o.scrollHeight)+"px";
-}
 </script>
 </body>
 </html>
