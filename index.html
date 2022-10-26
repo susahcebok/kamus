@@ -9,31 +9,6 @@
 <link rel="stylesheet" href="css/style.css">
 <script defer src="js/translate.js"></script>
 <style>
-textarea, pre {
-  width: 90%;
-  max-width: 512px;
-  margin: 10px 0 20px 0;
-  padding: 0;
-  font-size: 20px;
-  font-family: monospace;
-  border: none;
-}
-
-textarea {
-  height: 256px;
-  background-color: #eee;
-  opacity: 1;
-  transition: opacity 1s, height 1s;
-}
-
-textarea:disabled {
-  height: 0;
-  opacity: 0;
-  transition: opacity 1s 1s, height 1s 2s;
-}
-
-pre { white-space: pre-wrap; }
-
 button {
   position: fixed;
   top: 10px;
@@ -51,8 +26,7 @@ svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
 
 <p>
 <textarea disabled></textarea>
-<button>play</button>
-<pre></pre>
+
 
 <!-- bearror logo ✖ᴥ✖ -->
 <svg width="32px" height="32px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -128,99 +102,15 @@ svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
         </select>
 </p>
 
-<!--
+
 <p class="notranslate"><button class="button">Click Me</button></p>
+
+<!--
 <p><a href="#">More information...</a></p>
 -->
 
 </div>
 <script>
-const input = document.querySelector('textarea')
-const output = document.querySelector('pre')
-const button = document.querySelector('button')
-
-let edits = []
-let start = 0
-let finish = 0
-
-function recordEdit ({ timeStamp, inputType, data }) {
-  const delta = (edits.length > 0) ? timeStamp - edits[edits.length - 1].timeStamp : 0
-  
-  // you'll still face weird bugs like this even with inputType
-  if (inputType === 'insertText' && data === null) inputType = 'insertLineBreak'
-
-  console.log({ timeStamp, delta, inputType, data, start, finish })
-  edits.push({ timeStamp, delta, inputType, data, start, finish })
-  updateSelection()
-}
-
-// this is a lot more involved for contenteditables
-function updateSelection () {
-  start = input.selectionStart
-  finish = input.selectionEnd
-}
-
-function replay () {
-  output.textContent = replayEdit(output.textContent, edits.shift())
-
-  if (edits.length > 0) {
-    input.disabled = true
-    button.disabled = true
-    window.setTimeout(replay, edits[0].delta)
-  } else {
-    input.disabled = false
-    button.disabled = false
-  }
-}
-
-function replayEdit (text, { inputType, data, start, finish }) {
-  switch (inputType) {
-    case 'insertText': return insertText(text, data, start, finish)
-    case 'insertLineBreak': return insertLineBreak(text, start, finish)
-    case 'deleteContentBackward': return deleteContentBackward(text, start, finish)
-    // there are a lot more of these, but you get the point
-    // for example, you CAN catch the dreaded drag'n'drop cut-paste
-    dafault: return text
-  }
-}
-
-function insertText (text, data, start, finish) {
-  return text.substr(0, start) + data + text.substr(finish)
-}
-
-// [BUG]: deleting a word on chrome also deletes leading whitespace
-// perhaps the most practical way to deal with these implementation differences
-// would be to force the editor to your model after each (problematic) edit
-function deleteContentBackward (text, start, finish) {
-  return (start === finish)
-    ? text.substr(0, start - 1) + text.substr(finish)
-    : text.substr(0, start) + text.substr(finish)
-}
-
-function insertLineBreak (text, start, finish) {
-  return text.substr(0, start) + '\n' + text.substr(finish)
-}
-
-input.oninput = recordEdit
-document.onselectionchange = updateSelection
-button.onclick = replay
-
-// replaying a message back to you to showcase the functionality
-const message =
-`Hello from the past!
-
-This is a quick app to showcase the inputType property. It's quite useful for determining what the user wants to happen to the text.
-
-You also get undo/redo for just about free and can utilize the diffs for rendering purposes. Nifty, huh?`
-
-// the unoptimized array is pretty fat so I didn't want to inline it
-fetch('https://s3-us-west-2.amazonaws.com/s.cdpn.io/333852/input.json')
-  .then(response => response.json())
-  .then(data => {
-    edits = data
-    input.value = message
-    replay()
-  })
 
 </script>
 </body>
