@@ -10,9 +10,11 @@
 <script defer src="js/translate.js"></script>
 <style>
 textarea {
-  overflow:hidden;
-  resize:vertical; 
-  width:100%;
+	resize: none;
+	padding: 5px;
+	min-height: 50px;
+	overflow-y: auto;
+	max-height: 200px;
 }
 
 button {
@@ -31,7 +33,7 @@ svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
 <h1 class="notranslate">Kamus Translate</h1>
 
 <p>
-<textarea rows="1" class="growTextarea" placeholder="Type or paste in some long text." style="min-height:80px">You can translate the content of this page by selecting a language in the select box.</textarea>
+<textarea oninput="textAreaAdjust(this)">You can translate the content of this page by selecting a language in the select box.</textarea>
 </p>
 
 <!-- bearror logo ✖ᴥ✖ -->
@@ -116,22 +118,10 @@ svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
 
 </div>
 <script>
-function growTextarea (i,elem) {
-	var elem = $(elem);
-	var resizeTextarea = function( elem ) {
-    	var scrollLeft = window.pageXOffset || (document.documentElement || document.body.parentNode || document.body).scrollLeft;
-    	var scrollTop  = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;  
-    	elem.css('height', 'auto').css('height', elem.prop('scrollHeight') );
-      	window.scrollTo(scrollLeft, scrollTop);
-  	};
-  	elem.on('input', function() {
-    	resizeTextarea( $(this) );
-  	});
-  	resizeTextarea( $(elem) );
+function textAreaAdjust(o) {
+  o.style.height = "1px";
+  o.style.height = (o.scrollHeight)+"px";
 }
-
-$('.growTextarea').each(growTextarea);
-
 </script>
 </body>
 </html>
