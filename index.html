@@ -9,38 +9,18 @@
 <link rel="stylesheet" href="css/style.css">
 <script defer src="js/translate.js"></script>
 <style>
-.textarea {
-  border: 1px solid #ccc;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 1px 6px;
-}
-.width-machine {
-  /*   Sort of a magic number to add extra space for number spinner */
-  padding: 0 1rem;
-}
-
-.textarea {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-  resize: both;
-  min-height: 40px;
-  line-height: 20px;
-}
-
-.textarea[contenteditable]:empty::before {
-  content: "Anda dapat menerjemahkan konten halaman ini dengan memilih bahasa di kotak pilih.";
-  color: gray;
+textarea {
+  box-sizing: border-box;
+  resize: none;
 }
 </style>
 </head>
 <body id="susah-berak">
 <div class="susah-cebok">
 <h1 class="notranslate">Kamus Translate</h1>
-<span class="textarea" role="textbox" contenteditable>
+<textarea data-autoresize rows="2">
 <p>You can translate the content of this page by selecting a language in the select box.</p>
-</span>
+</textarea>
 
 <p class="notranslate">Translate this page:</p>
 <p class="notranslate">
@@ -116,22 +96,17 @@
 -->
 </div>
 <script>
-// Dealing with Input width
-let widthMachine = document.querySelector(".width-machine");
-
-// Dealing with Textarea Height
-function calcHeight(value) {
-  let numberOfLineBreaks = (value.match(/\n/g) || []).length;
-  // min-height + lines x line-height + padding + border
-  let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
-  return newHeight;
+function addAutoResize() {
+  document.querySelectorAll('[data-autoresize]').forEach(function (element) {
+    element.style.boxSizing = 'border-box';
+    var offset = element.offsetHeight - element.clientHeight;
+    element.addEventListener('input', function (event) {
+      event.target.style.height = 'auto';
+      event.target.style.height = event.target.scrollHeight + offset + 'px';
+    });
+    element.removeAttribute('data-autoresize');
+  });
 }
-
-let textarea = document.querySelector(".resize-ta");
-textarea.addEventListener("keyup", () => {
-  textarea.style.height = calcHeight(textarea.value) + "px";
-});
-
 </script>
 </body>
 </html>
