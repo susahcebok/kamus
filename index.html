@@ -8,11 +8,11 @@
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="css/style.css">
 <script defer src="js/translate.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
-<link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.css" rel="stylesheet">
 <style>
 textarea {
+  height: 24px;
+  font-size: 16px;
+  line-height: 1.5;
   box-sizing: border-box;
   resize: none;
 }
@@ -21,7 +21,7 @@ textarea {
 <body id="susah-berak">
 <div class="susah-cebok">
 <h1 class="notranslate">Kamus Translate</h1>
-<textarea data-autoresize rows="2">
+<textarea>
 <p>You can translate the content of this page by selecting a language in the select box.</p>
 </textarea>
 
@@ -99,17 +99,21 @@ textarea {
 -->
 </div>
 <script>
-function addAutoResize() {
-  document.querySelectorAll('[data-autoresize]').forEach(function (element) {
-    element.style.boxSizing = 'border-box';
-    var offset = element.offsetHeight - element.clientHeight;
-    element.addEventListener('input', function (event) {
-      event.target.style.height = 'auto';
-      event.target.style.height = event.target.scrollHeight + offset + 'px';
-    });
-    element.removeAttribute('data-autoresize');
-  });
-}
+var ROW_HEIGHT = 24; // font-size + lineheight
+var scrollTop, offsetH;
+var els = document.getElementsByTagName('textarea');
+	for (var i = 0; i < els.length; i++){
+		els[i].style.height = 'auto';
+		els[i].style.overflow = 'hidden';
+		els[i].style.height = els[i].scrollHeight - ROW_HEIGHT + "px";
+		els[i].addEventListener('input', fit, false);
+	}
+	function fit(){
+		while(this.scrollHeight <= this.offsetHeight && this.offsetHeight > ROW_HEIGHT){
+			this.style.height = this.offsetHeight - ROW_HEIGHT + "px";
+		}
+		this.style.height = this.scrollHeight + "px";
+	}
 </script>
 </body>
 </html>
