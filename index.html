@@ -7,72 +7,22 @@
 <title>Susah Cebok</title>
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/custom.css">
-<!-- for the minified version -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
-<link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.css" rel="stylesheet">
-<style>
-footer {
-  text-align: center;
-  color: #aaa;
-  font-size: 14px;
-}
-</style>
+<script defer src="https://cdn.statically.io/gh/andronasef/autotranslate/master/translate.js"></script>
 </head>
 <body>
 <div id="susah-berak">
 <div class="susah-cebok">
-<h1>Twibbon Generator</h1>
-<p>Ini adalah situs web tempat Anda dapat menambahkan foto ke bingkai.</p>
-<p>Silahkan unggah gambar dan klik pratinjau lalu unduh, aplikasi ini akan otomatis menggabungkan unggahan gambar yang Anda pilih.</p>
-<p>
-<label class="uploadBtnWrap" for="thefile">
-<input type="file" id="thefile" onchange="alertFilename()" multiple/>
-<span class="btn">Unggah Gambar...</span>
-<span class="tooltip" title="Unggah Gambar" id="fileName">Tidak ada file yang dipilih</span>
-</label>
-</p>
+<h1>Kamus Translate</h1>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
-<p>
-<button id="myModal" class="press press-black press-round press-ghost" onclick="generate()">Pratinjau</button>
-<!--<button class="press press-indigo press-round press-ghost" onclick="download('')" id="download" disabled>Unduh</button>-->
-</p>
-
-
-
-<div style="display: none" id="resultTW">
-<canvas id="canvas"></canvas>
-<p>
-<button class="press press-indigo press-round press-ghost" onclick="download('')" id="download" disabled>Unduh</button>
-<button class="press press-red press-round press-ghost" id="cancel" onclick="location.reload()">Hapus</button>
-</p>
-</div>
-
-
-<!--
 <button class="button">Click Me</button>
+<!--
 <p><a href="#">More information...</a></p>
 -->
 </div>
 </div>
-<footer>
-<p>&copy; 2015 &bull; Ferry Ayunda</p>
-</footer>
 
-<script src="js/app.js"></script>
-<script>
-new jBox('Tooltip', {
-  attach: '.tooltip'
-});
-</script>
-
-<script>
-new jBox('Modal', {
-  attach: '#myModal',
-  title: 'Twibbon Generator',
-  content: $('#resultTW')
-});
-</script>
 </body>
 </html>
