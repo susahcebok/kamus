@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementsByTagName('body')[0].appendChild(translateElement);
 
   var script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/gh/andronasef/autotranslate/res/gtranslate.js';
+  script.src = 'js/gtranslate.js';
   script.type = 'text/javascript';
   document.getElementsByTagName('head')[0].appendChild(script);
 
