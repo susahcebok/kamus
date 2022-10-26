@@ -21,11 +21,8 @@ textarea {
 <body id="susah-berak">
 <div class="susah-cebok">
 <h1 class="notranslate">Kamus Translate</h1>
-<p>
-<textarea>
-You can translate the content of this page by selecting a language in the select box.
-</textarea>
-</p>
+
+<p>You can translate the content of this page by selecting a language in the select box.</p>
 
 <p class="notranslate">Translate this page:</p>
 <p class="notranslate">
@@ -99,23 +96,9 @@ You can translate the content of this page by selecting a language in the select
 <p class="notranslate"><button class="button">Click Me</button></p>
 <p><a href="#">More information...</a></p>
 -->
+
 </div>
 <script>
-var ROW_HEIGHT = 24; // font-size + lineheight
-var scrollTop, offsetH;
-var els = document.getElementsByTagName('textarea');
-	for (var i = 0; i < els.length; i++){
-		els[i].style.height = 'auto';
-		els[i].style.overflow = 'hidden';
-		els[i].style.height = els[i].scrollHeight - ROW_HEIGHT + "px";
-		els[i].addEventListener('input', fit, false);
-	}
-	function fit(){
-		while(this.scrollHeight <= this.offsetHeight && this.offsetHeight > ROW_HEIGHT){
-			this.style.height = this.offsetHeight - ROW_HEIGHT + "px";
-		}
-		this.style.height = this.scrollHeight + "px";
-	}
 </script>
 </body>
 </html>
