@@ -9,9 +9,21 @@
 <link rel="stylesheet" href="css/style.css">
 <script defer src="js/translate.js"></script>
 <style>
-.area {
-  min-width:200px;
-  min-height:5px;
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-sart;
+}
+
+.heightKepper {
+  width: 1px;
+  margin-right: -1px;
+}
+
+.textarea {
+  overflow: hidden;
+  flex-grow: 1; 
+  resize: none;
 }
 </style>
 </head>
@@ -19,10 +31,13 @@
 <div class="susah-cebok">
 <h1 class="notranslate">Kamus Translate</h1>
 
-<p id="content">
-<textarea id="textarea">
+<p>
+<div class="wrapper">
+<div class="heightKepper"></div>
+<textarea class="textarea">
 You can translate the content of this page by selecting a language in the select box.
 </textarea>
+</div>
 </p>
 
 <p class="notranslate">Translate this page:</p>
@@ -100,11 +115,27 @@ You can translate the content of this page by selecting a language in the select
 
 </div>
 <script>
-$('#content').on('change keyup keydown paste cut input', 'textarea',    function () { 
-      $(this).height(0).height(this.scrollHeight);
-      console.log(this)
-    }
-)
+const textarea = document.querySelector(".textarea")
+const heightKeeper = document.querySelector(".heightKeeper")
+
+function setHeight() {
+  // The neccessary height is stored in the scrollHeight
+  // but to get it, the height must be set  to inherit
+  textarea.style.height = "inherit"  
+  // update the height
+  textarea.style.height = textarea.scrollHeight+"px"
+  
+  // While setting the height of the element to inherit, some browsers set it to the 
+  // realy small initial height and shortens the document body by that way.
+  // The browser scrolls in a bad way.
+  // To prevent that, the textarea gets wrapped in the flexbox with an second and invisible 
+  // Element side by side. The Heightkepper does its job an sets the height of the flexbox..
+  heightKeeper.style.height = textarea.scrollHeight+"px"
+}
+
+textarea.addEventListener("input", setHeight)
+window.addEventListener("resize", setHeight)
+setHeight()
 </script>
 </body>
 </html>
