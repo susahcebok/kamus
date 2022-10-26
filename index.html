@@ -9,22 +9,40 @@
 <link rel="stylesheet" href="css/style.css">
 <script defer src="js/translate.js"></script>
 <style>
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-sart;
+textarea, pre {
+  width: 90%;
+  max-width: 512px;
+  margin: 10px 0 20px 0;
+  padding: 0;
+  font-size: 20px;
+  font-family: monospace;
+  border: none;
 }
 
-.heightKepper {
-  width: 1px;
-  margin-right: -1px;
+textarea {
+  height: 256px;
+  background-color: #eee;
+  opacity: 1;
+  transition: opacity 1s, height 1s;
 }
 
-.textarea {
-  overflow: hidden;
-  flex-grow: 1; 
-  resize: none;
+textarea:disabled {
+  height: 0;
+  opacity: 0;
+  transition: opacity 1s 1s, height 1s 2s;
 }
+
+pre { white-space: pre-wrap; }
+
+button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+/* bearror logo ✖ᴥ✖ */
+svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
+
 </style>
 </head>
 <body id="susah-berak">
