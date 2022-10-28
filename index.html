@@ -26,6 +26,15 @@
 	border: solid 1px #dadada;	
 }
 
+textarea {
+  width:auto;
+  height: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  resize: none;
+}
+
 /* bearror logo ✖ᴥ✖ */
 svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
 </style>
@@ -33,12 +42,13 @@ svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
 <body id="susah-berak">
 <div class="susah-cebok">
 <h1 class="notranslate">Kamus Translate</h1>
-
+<!--
 <p class="notranslate">Layanan Google yang ditawarkan tanpa biaya ini dapat langsung menerjemahkan berbagai kata, frasa, dan halaman web ke bahasa Indonesia dan lebih dari 100 bahasa lainnya.</p>
 <p>
 <div id="word-count-input" class="jm-textarea" placeholder="You can translate the content of this page by selecting a language in the select box." contenteditable></div>
 </p>
-
+-->
+<textarea id="word-count-input"></textarea>
 <p class="notranslate"><strong><span id="word-count">0</span> words</strong> | <strong><span id="character-count">0</span> characters</strong>.</p>
 <!-- bearror logo ✖ᴥ✖ -->
 <a href="https://www.facebook.com/bungferry.wa">
@@ -118,5 +128,22 @@ svg { position: fixed; bottom: 10px; right: 10px; fill: #888; opacity: 0.2; }
 
 </div>
 <script src="js/count.js"></script>
+<style>
+var ROW_HEIGHT = 24; // font-size + lineheight
+var scrollTop, offsetH;
+var els = document.getElementsByTagName('textarea');
+	for (var i = 0; i < els.length; i++){
+		els[i].style.height = 'auto';
+		els[i].style.overflow = 'hidden';
+		els[i].style.height = els[i].scrollHeight - ROW_HEIGHT + "px";
+		els[i].addEventListener('input', fit, false);
+	}
+	function fit(){
+		while(this.scrollHeight <= this.offsetHeight && this.offsetHeight > ROW_HEIGHT){
+			this.style.height = this.offsetHeight - ROW_HEIGHT + "px";
+		}
+		this.style.height = this.scrollHeight + "px";
+	}
+</style>
 </body>
 </html>
